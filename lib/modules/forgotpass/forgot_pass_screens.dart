@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:sysfood/modules/forgotpass/forgot_controller.dart';
+import 'package:sysfood/widgets/customize_textform.dart';
 import '../../widgets/customize_button.dart';
 
 class ForgetPassword extends GetView<ForgotController> {
@@ -69,19 +70,7 @@ class ForgetPassword extends GetView<ForgotController> {
                           ),
                         ],
                       ),
-                      const Padding(
-                        padding: EdgeInsets.only(top: 10, left: 15),),
-                      TextFormField(
-                        decoration: InputDecoration(
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(5),
-                              borderSide: const BorderSide(
-                                color: Color(0xFFff0036), width: 3,),
-                            )
-                        ),
-                      ),
-                      const Padding(
-                        padding: EdgeInsets.only(top: 15, left: 10),),
+                      const CustomizeTextForm(),
                       const CustomizeButton(
                         buttonText: "Get Code",
                         buttonColor: Color(0xFFff0036),

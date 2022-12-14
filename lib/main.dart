@@ -5,7 +5,8 @@ import 'package:sysfood/routes/app_pages.dart';
 
 void main() async {
  await GetStorage.init();
-  runApp(GetMaterialApp(
+  runApp(
+      GetMaterialApp(
     title: "SYSFOOD",
     initialRoute: AppPages.INITIAL ,
     getPages: AppPages.routes,

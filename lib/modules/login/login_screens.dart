@@ -5,6 +5,8 @@ import 'package:sysfood/modules/forgotpass/forgot_pass_screens.dart';
 import 'package:sysfood/modules/login/login_controller.dart';
 import 'package:sysfood/routes/app_pages.dart';
 import 'package:sysfood/widgets/customize_button.dart';
+import 'package:sysfood/widgets/customize_textform.dart';
+
 
 class LogInScreen extends GetView<LoginController> {
    LogInScreen({Key? key}) : super(key: key);
@@ -28,9 +30,7 @@ class LogInScreen extends GetView<LoginController> {
           padding: const EdgeInsets.only(top: 20),
           height: size.height,
           width: size.width,
-          child: GetBuilder<LoginController>(
-            builder: (controller) {
-              return Column(
+          child:Column(
                 children: [
                   Image.asset("assets/images/Sysfood logo.png"),
                   Expanded(
@@ -73,20 +73,7 @@ class LogInScreen extends GetView<LoginController> {
                               ),
                             ],
                           ),
-                          const Padding(
-                            padding: EdgeInsets.only(top: 10, left: 15),),
-                          TextFormField(
-                            decoration: InputDecoration(
-                                border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(5),
-                                  borderSide: const BorderSide(
-                                    color: Color(0xFFff0036), width: 3,),
-                                )
-                            ),
-                            controller: controller.emailController,
-                          ),
-                          const Padding(
-                            padding: EdgeInsets.only(top: 20, left: 15),),
+                          const CustomizeTextForm(),
                           Row(
                             children: [
                               Icon(Icons.lock, size: 15),
@@ -100,27 +87,11 @@ class LogInScreen extends GetView<LoginController> {
                               ),
                             ],
                           ),
-                          const Padding(
-                            padding: EdgeInsets.only(top: 10, left: 15),),
-                          TextFormField(
-                            decoration: InputDecoration(
-                                border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(5),
-                                  borderSide: const BorderSide(
-                                    color: Color(0xFFff0036), width: 3,),
-                                )
-                            ),
-                            controller: controller.passwordController,
-                          ),
-                          const Padding(
-                            padding: EdgeInsets.only(top: 15, left: 10),),
+                          const CustomizeTextForm(),
                           const CustomizeButton(
                             buttonText: "Log In",
                             buttonColor: Color(0xFFff0036),
                             textColor: Colors.white,
-                            onPressed: (){
-                              controller.login();
-                            },
                           ),
                           Align(
                             alignment: Alignment.bottomCenter,
@@ -146,12 +117,10 @@ class LogInScreen extends GetView<LoginController> {
                     ),
                   ),
                 ],
-              );
-            }
+              ),
+              ),
           ),
-        ),
-      ),
-    );
+   );
   }
 }
 
