@@ -20,12 +20,12 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.SPLASH,
-      page: () => const SplashScreen(),
+      page: () =>  SplashScreen(),
       binding: SplashBinding(),
     ),
     GetPage(
       name: _Paths.LOGIN,
-      page: () => const LogInScreen(),
+      page: () =>  LogInScreen(),
       binding: LoginBinding(),
     ),
     GetPage(
