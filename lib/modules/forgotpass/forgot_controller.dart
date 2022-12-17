@@ -1,8 +1,10 @@
+import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import '../../routes/app_pages.dart';
 
 class ForgotController extends GetxController {
+  TextEditingController emailController = TextEditingController();
   final getStorge = GetStorage();
   @override
   void onInit() {

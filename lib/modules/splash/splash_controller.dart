@@ -4,16 +4,13 @@ import '../../routes/app_pages.dart';
 
 class SplashController extends GetxController {
   final getStorge = GetStorage();
-  @override
-  void onInit() {
-    super.onInit();
-  }
 
   @override
   void onReady() {
     super.onReady();
     if (getStorge.read("id") != null) {
-      Future.delayed(const Duration(seconds: 5), () {
+      Future.delayed(const Duration(seconds: 5),()
+      {
         Get.offAllNamed(Routes.HOME);
       });
     }
@@ -22,8 +19,4 @@ class SplashController extends GetxController {
     }
   }
 
-  @override
-  void onClose() {
-    super.onClose();
-  }
 }

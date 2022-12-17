@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:sysfood/modules/forgotpass/forgot_controller.dart';
@@ -6,8 +7,9 @@ import 'package:sysfood/widgets/customize_textform.dart';
 import '../../widgets/customize_button.dart';
 
 class ForgetPassword extends GetView<ForgotController> {
-  const ForgetPassword({Key? key}) : super(key: key);
+   ForgetPassword({Key? key}) : super(key: key);
 
+  ForgotController forgotController = Get.put(ForgotController());
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery
@@ -70,7 +72,7 @@ class ForgetPassword extends GetView<ForgotController> {
                           ),
                         ],
                       ),
-                      const CustomizeTextForm(),
+                      CustomizeTextForm(textEditingController: forgotController.emailController),
                       const CustomizeButton(
                         buttonText: "Get Code",
                         buttonColor: Color(0xFFff0036),
