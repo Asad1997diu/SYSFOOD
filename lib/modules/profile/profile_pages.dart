@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+import 'package:get/get_state_manager/src/simple/get_view.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:sysfood/modules/home/home_controller.dart';
+import 'package:sysfood/modules/profile/profile_controller.dart';
 
-
-class HomeScreen extends GetView<HomeController> {
-  const HomeScreen({super.key});
+class ProfilePage extends GetView<ProfileController> {
+  const ProfilePage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -23,11 +22,10 @@ class HomeScreen extends GetView<HomeController> {
       ),
       body: Center(
         child: Text(
-          "Home",
+          "Profile",
           style: TextStyle(fontSize: 20),
         ),
       ),
     );
   }
 }
-

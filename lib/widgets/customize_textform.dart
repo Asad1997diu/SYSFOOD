@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 class CustomizeTextForm extends StatelessWidget {
   final TextEditingController textEditingController;
-
-    const CustomizeTextForm({Key? key, required this.textEditingController}) : super(key: key);
+  final String hinText;
+  const CustomizeTextForm({Key? key, required this.textEditingController, required this.hinText}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -12,11 +12,13 @@ class CustomizeTextForm extends StatelessWidget {
       child: TextFormField(
         controller: textEditingController,
         decoration: InputDecoration(
+          alignLabelWithHint: true,
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(5),
               borderSide: const BorderSide(
-                color: Color(0xFFff0036), width: 3,),
-            )
+                color: Color(0xFFff0036), width: 3)),
+          hintText: hinText,
+          hintStyle: const TextStyle(color: Colors.grey),
         ),
       ),
     );

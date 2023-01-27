@@ -12,13 +12,11 @@ class ForgetPassword extends GetView<ForgotController> {
   ForgotController forgotController = Get.put(ForgotController());
   @override
   Widget build(BuildContext context) {
-    final Size size = MediaQuery
-        .of(context)
-        .size;
+    final Size size = MediaQuery.of(context).size;
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      backgroundColor: Colors.white70,
-      body: SafeArea(
+      backgroundColor: Colors.white,
+      body: SingleChildScrollView(
         child: Container(
           decoration: const BoxDecoration(
               image: DecorationImage(
@@ -26,7 +24,7 @@ class ForgetPassword extends GetView<ForgotController> {
                 image: AssetImage("assets/images/background.png"),
               )
           ),
-          padding: const EdgeInsets.only(top: 20),
+          padding: const EdgeInsets.only(top: 40),
           height: size.height,
           width: size.width,
           child: Column(
@@ -40,6 +38,12 @@ class ForgetPassword extends GetView<ForgotController> {
                   decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(40),
+                      boxShadow:[ BoxShadow(
+                          color: Colors.grey.withOpacity(0.5),
+                          offset: const Offset(5.0,5.0),
+                          blurRadius: 10.0,
+                          spreadRadius: 2.0)
+                      ]
                   ),
                   width: size.width,
                   child: Column(
@@ -59,20 +63,23 @@ class ForgetPassword extends GetView<ForgotController> {
                             fontWeight: FontWeight.w600),),),
                       const Padding(padding: EdgeInsets.only(
                           top: 30, left: 20, right: 20),),
-                      Row(
-                        children: [
-                          const Icon(Icons.email, size: 15),
-                          Text(
-                            ' Email',
-                            style: GoogleFonts.nunito(
-                              textStyle: const TextStyle(color: Colors.black,
-                                  fontSize: 15,
-                                  fontWeight: FontWeight.w700),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 8.0),
+                        child: Row(
+                          children: [
+                            const Icon(Icons.email, size: 15),
+                            Text(
+                              ' Email',
+                              style: GoogleFonts.nunito(
+                                textStyle: const TextStyle(color: Colors.black,
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.w700),
+                              ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
-                      CustomizeTextForm(textEditingController: forgotController.emailController),
+                      CustomizeTextForm(textEditingController: forgotController.emailController, hinText: 'Email',),
                       const CustomizeButton(
                         buttonText: "Get Code",
                         buttonColor: Color(0xFFff0036),

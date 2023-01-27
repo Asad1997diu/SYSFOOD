@@ -1,56 +1,47 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:http/http.dart' as http;
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:http/http.dart';
 import 'package:sysfood/modules/home/home_screen.dart';
 import 'package:sysfood/utils/api_endpoints.dart';
+import 'package:get/get_connect/http/src/response/response.dart';
 
 
 class LoginController extends GetxController {
- TextEditingController emailController = TextEditingController();
- TextEditingController passwordController = TextEditingController();
- final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
 
-  Future<void> loginWithEmail() async {
-    var headers = {'Contant-Type': 'application/json'};
-    try{
-      var url = Uri.parse(
-        ApiEndpoints.baseUrl + ApiEndpoints.authEndpoints.loginEmail);
-      Map body = {
-        'email': emailController.text.trim(),
-        'password': passwordController.text
-      };
-      http.Response response = await http.post(url, body: jsonEncode(body),headers: headers);
-      if(response.statusCode == 200)
-        {
-          final json = jsonDecode(response.body);
-          if(json['code'] == 0)
-            {
-              var token = json['data']['token'];
-              final SharedPreferences? prefs = await _prefs;
-              await prefs?.setString('token', token);
+  void loginWithEmail() async {
+    try {
+      var response = await post(
+          Uri.parse(
+              ApiEndpoints.baseUrl + ApiEndpoints.authEndpoints.loginEmail),
+          body: {
+            'email': emailController.text.trim(),
+            'password': passwordController.text
+          }
+      );
 
-              emailController.clear();
-              passwordController.clear();
-              Get.off(HomeScreen());
-            }
-          else if (json['code'] == 1)
-          {
-            throw jsonDecode(response.body)['message'];
-          }
-          else
-          {
-            throw jsonDecode(response.body)['Message'] ?? "Unknown Error occured";
-          }
-        }
+      if (response.statusCode == 200) {
+        var data = jsonDecode(response.body.toString());
+        print(data['token']);
+        print(data['message']);
+
+        emailController.clear();
+        passwordController.clear();
+        Get.off(HomeScreen());
+      }
+      else {
+        print('Failed');
+        emailController.clear();
+        passwordController.clear();
+      }
     }
-    catch(error){
+    catch (error) {
       Get.back();
-      showDialog(context: Get.context!, builder: (context)
-      {
+      showDialog(context: Get.context!, builder: (context) {
         return SimpleDialog(
-          title:  Text('Error'),
+          title: Text('Error'),
           contentPadding: EdgeInsets.all(20),
           children: [Text(error.toString())],
         );

@@ -7,19 +7,20 @@ import 'package:sysfood/widgets/customize_button.dart';
 import 'package:sysfood/widgets/customize_textform.dart';
 
 
+
+
 class LogInScreen extends GetView<LoginController> {
    LogInScreen({Key? key}) : super(key: key);
 
    LoginController loginController = Get.put(LoginController());
-   var isLogin =false.obs;
 
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
+
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      backgroundColor: Colors.white70,
-      body: SingleChildScrollView(
+      body:SingleChildScrollView(
         child: Container(
           decoration: const BoxDecoration(
             image: DecorationImage(
@@ -36,12 +37,17 @@ class LogInScreen extends GetView<LoginController> {
                   Expanded(
                     child: Container(
                       margin: const EdgeInsets.only(
-                          bottom: 100, left: 20, right: 20, top: 30),
+                          bottom: 80, left: 20, right: 20, top: 30),
                       padding: const EdgeInsets.all(20),
                       decoration: BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(40),
-                      ),
+                        boxShadow:[ BoxShadow(
+                          color: Colors.grey.withOpacity(0.5),
+                        offset: const Offset(5.0,5.0),
+                        blurRadius: 10.0,
+                        spreadRadius: 2.0)
+                        ]),
                       width: size.width,
                       child: Center(
                         child: Column(
@@ -77,7 +83,7 @@ class LogInScreen extends GetView<LoginController> {
                                 ],
                               ),
                             ),
-                            CustomizeTextForm(textEditingController: loginController.emailController),
+                            CustomizeTextForm(textEditingController: loginController.emailController, hinText: 'Email',),
                             Padding(
                               padding: const EdgeInsets.only(left: 8.0),
                               child: Row(
@@ -94,12 +100,12 @@ class LogInScreen extends GetView<LoginController> {
                                 ],
                               ),
                             ),
-                            CustomizeTextForm(textEditingController: loginController.passwordController),
+                            CustomizeTextForm(textEditingController: loginController.passwordController, hinText: 'Password',),
                             CustomizeButton(
                               buttonText: "Log In",
                               buttonColor: Color(0xFFff0036),
                               textColor: Colors.white,
-                              onPressed: () => isLogin.value = true,
+                              onPressed: () => loginController.loginWithEmail(),
                             ),
                             Align(
                               alignment: Alignment.bottomCenter,
@@ -113,12 +119,12 @@ class LogInScreen extends GetView<LoginController> {
                                   child: Text(
                                     "Forgot Password", style: GoogleFonts.nunito(
                                       textStyle: const TextStyle(fontSize: 16,
-                                          color: Color(0xFFff0036),
+                                          color: Color(0xFF14B4FF),
                                           fontWeight: FontWeight.bold)),
                                   ),
                                 ),
                               ),
-                            )
+                            ),
                           ],
                         ),
                         ),

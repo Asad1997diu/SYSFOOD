@@ -3,9 +3,9 @@ import 'package:google_fonts/google_fonts.dart';
 
 class AppStyle{
 
-  static Color bgcolorone = const Color(0xFFff0036);
-  static Color bgcolortwo = const Color(0xFFff6787);
-  static Color btncolor = const Color(0xFFff0036);
+  static Color bgcolorone = const Color(0xFF14B4FF);
+  static Color bgcolortwo = const Color(0xFF14E8F5);
+  static Color btncolor = const Color(0xFF14B4FF);
   static Color txtcolor = Colors.white;
 
   static TextStyle mainTitle = GoogleFonts.roboto(fontSize: 18.0, fontWeight: FontWeight.bold,color: Colors.black);
